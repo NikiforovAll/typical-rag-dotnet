@@ -1,0 +1,34 @@
+POST https://localhost:7016/rag/upload HTTP/1.1
+accept: application/json
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Disposition: form-data; name="file"; filename="ExampleTestDocument.pdf"
+Content-Type: pdf
+
+< ./test.pdf
+--boundary--
+
+###
+GET https://localhost:7016/alive
+accept: application/json
+
+###
+curl -X 'POST' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{ "query": "Azure Essentials" }'
+
+###
+curl -X 'POST' \
+    'https://localhost:7016/rag/ask' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{ "question": "What kind of Azure Database services can I use?" }'
+
+### 
+
+curl -X 'GET' \
+    'https://localhost:7016/rag/my-query?q=What%20is%20the%20best%20way%20to%20learn%20Azure%3F' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
