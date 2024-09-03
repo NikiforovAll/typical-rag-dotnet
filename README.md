@@ -1,7 +1,5 @@
 # Typical RAG implementation using Semantic Kernel, Semantic Memory and Aspire
 
-[![Build](https://github.com/NikiforovAll/typical-rag-dotnet/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/NikiforovAll/typical-rag-dotnet/actions/workflows/build.yml)
-
 This repository contains a source code of an example of a typical RAG implementation using out-of-the box solution based on `Microsoft.KernelMemory.Service.AspNetCore` package.
 
 Here is how the ingestion pipeline looks like:
