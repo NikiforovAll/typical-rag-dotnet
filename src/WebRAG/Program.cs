@@ -1,10 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.KernelMemory;
+using Microsoft.KernelMemory.SemanticKernel;
 using Microsoft.KernelMemory.Service.AspNetCore;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
 using WebRAG;
+
+#pragma warning disable SKEXP0010
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,25 +46,21 @@ builder.Services.AddKernelMemory<MemoryServerless>(memoryBuilder =>
                 ConnectionString = builder.Configuration.GetConnectionString("rag-db")!
             }
         )
-        .WithAzureOpenAITextGeneration(
-            new AzureOpenAIConfig
-            {
-                Auth = AzureOpenAIConfig.AuthTypes.APIKey,
-                APIKey = aiOptions.ApiKey,
-                APIType = AzureOpenAIConfig.APITypes.ChatCompletion,
-                Deployment = aiOptions.Deployment,
-                Endpoint = aiOptions.Endpoint,
-            }
+        .WithSemanticKernelTextGenerationService(
+            new AzureOpenAIChatCompletionService(
+                deploymentName: aiOptions.Deployment,
+                endpoint: aiOptions.Endpoint,
+                apiKey: aiOptions.ApiKey
+            ),
+            new SemanticKernelConfig()
         )
-        .WithAzureOpenAITextEmbeddingGeneration(
-            new AzureOpenAIConfig
-            {
-                Auth = AzureOpenAIConfig.AuthTypes.APIKey,
-                APIKey = aiOptions.ApiKey,
-                APIType = AzureOpenAIConfig.APITypes.EmbeddingGeneration,
-                Deployment = "text-embedding-ada-002",
-                Endpoint = aiOptions.Endpoint,
-            }
+        .WithSemanticKernelTextEmbeddingGenerationService(
+            new AzureOpenAITextEmbeddingGenerationService(
+                deploymentName: "text-embedding-ada-002",
+                endpoint: aiOptions.Endpoint,
+                apiKey: aiOptions.ApiKey
+            ),
+            new SemanticKernelConfig()
         );
 });
 

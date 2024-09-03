@@ -1,4 +1,4 @@
-# Typical RAG implementation using Kernel Memory and Aspire
+# Typical RAG implementation using Semantic Kernel, Kernel Memory, and Aspire
 
 This repository contains a source code of an example of a typical RAG implementation using out-of-the box solution based on `Microsoft.KernelMemory.Service.AspNetCore` package.
 
@@ -150,6 +150,7 @@ Here is a diagram that shows various components of RAG architecture. As you can 
 
 - <https://learn.microsoft.com/en-us/semantic-kernel/get-started/quick-start-guide?pivots=programming-language-csharp> - Semantic Kernel Getting Started
 - <https://microsoft.github.io/kernel-memory/> - Semantic Memory Docs
+- <https://github.com/microsoft/kernel-memory/tree/main/examples> - Kernel Memory Docs
 - <https://www.deeplearning.ai/short-courses/langchain-chat-with-your-data/> - Chat with RAG
 - <https://www.youtube.com/playlist?list=PLfaIDFEXuae2LXbO1_PKyVJiQ23ZztA0x> - RAG from Scratch
 - <https://github.com/microsoft/semantic-kernel/blob/main/dotnet/docs/TELEMETRY.md> - OTel + SK
