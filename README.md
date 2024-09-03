@@ -1,4 +1,4 @@
-# Typical RAG implementation using Semantic Kernel, Semantic Memory and Aspire
+# Typical RAG implementation using Kernel Memory and Aspire
 
 This repository contains a source code of an example of a typical RAG implementation using out-of-the box solution based on `Microsoft.KernelMemory.Service.AspNetCore` package.
 
